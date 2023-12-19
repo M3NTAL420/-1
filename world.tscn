@@ -31,7 +31,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(31.5642, 0, 0, 0, 0.0520462, 0, 0, 0, 37.6962, 0.0314407, -1.54937, 0.0612488)
+transform = Transform3D(842.34, 0, 0, 0, 0.0422642, 0, 0, 0, 834.529, 0.0314407, -1.54937, 0.0612488)
 mesh = SubResource("BoxMesh_xqj0p")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
