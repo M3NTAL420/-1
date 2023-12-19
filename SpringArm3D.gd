@@ -14,5 +14,5 @@ func _unhandled_input(event: InputEvent):
 		rotation.y -= event.relative.x * mouse_sensitivity
 		rotation.y = wrapf(rotation.y, -PI, PI)
 
-func _process(delta):
+func _process(_delta):
 	pass

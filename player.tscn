@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://xj4qe4crjy8h"]
+[gd_scene load_steps=6 format=3 uid="uid://xj4qe4crjy8h"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_1kcij"]
 [ext_resource type="Script" path="res://SpringArm3D.gd" id="2_jdnyn"]
+[ext_resource type="Script" path="res://Camera3D.gd" id="3_v4xgl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ggf2d"]
 
@@ -16,12 +17,31 @@ shape = SubResource("CapsuleShape3D_ggf2d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_u20ra")
 
+[node name="Marker3D" type="Marker3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00149417, 0.0104121, 1.2753)
+
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
 spring_length = 3.0
 script = ExtResource("2_jdnyn")
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+script = ExtResource("3_v4xgl")
 
 [node name="RayCast3D" type="RayCast3D" parent="SpringArm3D/Camera3D"]
 
-[node name="Marker3D" type="Marker3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["Player"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("CapsuleShape3D_ggf2d")
+
+[node name="ProgressBar" type="ProgressBar" parent="Area3D"]
+offset_top = -1.0
+offset_right = 187.0
+offset_bottom = 27.0
+step = 1.0
+value = 100.0
+
+[node name="Timer" type="Timer" parent="Area3D/ProgressBar"]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Area3D/ProgressBar/Timer" to="." method="_on_timer_timeout"]
