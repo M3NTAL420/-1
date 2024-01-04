@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcg0n4dje08q6"]
+[gd_scene load_steps=8 format=3 uid="uid://dcg0n4dje08q6"]
 
 [ext_resource type="PackedScene" uid="uid://xj4qe4crjy8h" path="res://player.tscn" id="1_ca4d1"]
+[ext_resource type="PackedScene" uid="uid://vcbtjljs8vum" path="res://enemy.tscn" id="2_ht1xc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wvkmi"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,7 +32,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(842.34, 0, 0, 0, 0.0422642, 0, 0, 0, 834.529, 0.0314407, -1.54937, 0.0612488)
+transform = Transform3D(448.558, 0, 0, 0, 0.0382704, 0, 0, 0, 571.396, 0.0314407, -1.54937, 0.0612488)
 mesh = SubResource("BoxMesh_xqj0p")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
@@ -41,3 +42,6 @@ shape = SubResource("ConcavePolygonShape3D_ciopa")
 
 [node name="Player" parent="." instance=ExtResource("1_ca4d1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0350858, 1.2187, 0.356772)
+
+[node name="enemy" parent="." instance=ExtResource("2_ht1xc")]
+transform = Transform3D(0.503488, 0, 6.23137, 0, 20.0094, 0, -0.864002, 0, 3.63126, -18.1306, 8.92135, 21.6036)

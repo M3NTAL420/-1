@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-const SPEED = 100.0
+const SPEED = 50.0
 var player_detected = false
 var player = null
 var health = 1
@@ -20,5 +20,21 @@ func _process(delta):
 
 func _on_hit_box_area_entered(body):
 	if body.is_in_group("Bullet"):
+		health-=1
 		if health <= 0:
+			queue_free()
+		pass # Replace with function body.
+
+
+func Player_enter(area):
+	if area.is_in_group("Player"):
+		player = area
+		player_detected = true
+	pass # Replace with function body.
+
+
+func player_leave(area):	
+	if area.is_in_group("Player"):
+		player = null
+		player_detected = false
 	pass # Replace with function body.

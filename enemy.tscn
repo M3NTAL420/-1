@@ -9,6 +9,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_8rfcl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w1rl3"]
+size = Vector3(1000, 1000, 1000)
 
 [node name="enemy" type="RigidBody3D" groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.508327, 0)
@@ -21,13 +22,16 @@ mesh = SubResource("BoxMesh_uqo4a")
 shape = SubResource("BoxShape3D_20606")
 
 [node name="hit box" type="Area3D" parent="." groups=["enemy"]]
+transform = Transform3D(1.47211, 0, 0, 0, 1.2033, 0, 0, 0, 1.17685, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hit box"]
 shape = SubResource("BoxShape3D_8rfcl")
 
-[node name="player detect" type="Area3D" parent="."]
+[node name="player detect" type="Area3D" parent="." groups=["Player"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player detect"]
 shape = SubResource("BoxShape3D_w1rl3")
 
 [connection signal="area_entered" from="hit box" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_entered" from="player detect" to="." method="Player_enter"]
+[connection signal="area_exited" from="player detect" to="." method="player_leave"]
